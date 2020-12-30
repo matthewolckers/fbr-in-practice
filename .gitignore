@@ -1,0 +1,17 @@
+# Stata
+*.dta
+
+# Matlab
+*.mat
+
+# Jupyter Notebooks
+*.ipynb
+*.pyc
+.ipynb_checkpoints
+
+# R
+.Rhistory
+
+# Data
+data/112522-V1/*
+data/119802-V1/*
