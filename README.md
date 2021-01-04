@@ -55,7 +55,7 @@ Use data exported from the analysis to produce figures for the publication.
 
 `HodgeRank.md`
 
-Test HodgeRank on three simple examples.
+Test HodgeRank on simple examples.
 
 ---
 
@@ -64,4 +64,4 @@ Test HodgeRank on three simple examples.
 You can play with the data online using Binder.
 
 
-[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/matthewolckers/fbr-in-practice/master)
+[![Binder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/gh/matthewolckers/fbr-in-practice/HEAD)
