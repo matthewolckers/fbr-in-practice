@@ -374,6 +374,76 @@ Is the connectivity of the outlier networks lower than the other networks?
 
 ```
 
+```python
+def extract_network_stats(key_num):
+    '''
+    Extract network statistics from the subgraphs of 9 households who participate 
+    in the individualised wealth ranking. 
+    '''
+    key = "hamlet_" + str(key_num)
+    result = {}
+    g = data_dict[key]["graph"]
+    chosen = data_dict[key]["chosen"]
+    sg = g.subgraph(chosen)
+    result["density"] = nx.density(sg)
+    return result
+    
+```
+
+```python
+network_stats = {}
+for num in list(df_ham.index.values):
+    network_stats[num] = extract_network_stats(num)
+```
+
+```python
+df_ham["density"] = pd.DataFrame.from_dict(network_stats, orient='index')
+```
+
+```python
+df_ha
+```
+
+```python
+df_ham[['cycle_ratio','density']].corr()
+```
+
+```python
+df_ham[df_ham.cycle_ratio<0.3][['cycle_ratio','density']].corr()
+```
+
+```python
+df_ham[df_ham.cycle_ratio<0.2][['cycle_ratio','density']].corr()
+```
+
+```python
+df_ham[df_ham.cycle_ratio>0.2][['cycle_ratio','density']].corr()
+```
+
+```python
+df_ham[df_ham.cycle_ratio>0.3].density.describe()
+```
+
+```python
+df_ham[df_ham.cycle_ratio<0.3].density.describe()
+```
+
+```python
+data_dict['hamlet_487']
+```
+
+```python
+sns.regplot(x='density',y='cycle_ratio',data=df_ham[df_ham.cycle_ratio>0.2])
+```
+
+```python
+sns.regplot(x='density',y='cycle_ratio',data=df_ham)
+```
+
+```python
+df_ham.head()
+```
+
 Export data
 
 ```python
