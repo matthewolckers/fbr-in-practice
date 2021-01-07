@@ -2,7 +2,9 @@
 
 Code and data for [Friend-Based Ranking in Practice](https://www.aeaweb.org/conference/2021/preliminary/2338), a presentation by [Francis Bloch](https://www.sites.google.com/site/francisbloch1/) and [Matthew Olckers](https://www.matthewolckers.com/) at [American Economic Association's Annual Meeting](https://www.aeaweb.org/conference/about) on January 4, 2021.
 
-Code is written in Python and R and makes use of Jupyter Notebooks. Rather than saving the original notebook in this folder, we use [JupyText](https://github.com/mwouts/jupytext) to save either a markdown file, Python or R script.
+Code is written in Python makes use of Jupyter Notebooks. Rather than saving the original notebook in this folder, we use [JupyText](https://github.com/mwouts/jupytext) to save either a markdown file or Python script. We also save the output of the notebooks in the subfolder `notebooks/output` as pdf print-outs.
+
+Figures are produced in R using ggplot2.
 
 The analysis is completed in the following steps.
 
