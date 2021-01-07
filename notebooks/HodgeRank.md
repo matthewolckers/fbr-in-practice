@@ -33,6 +33,7 @@ def test_HodgeRank(x):
     x: string representing the filename of
     '''
     R = np.loadtxt("example/" + x + ".txt")
+    Z = R.copy()
     [R, Y] = [R[:, 0:2], R[:, 2]]
     print(Y)
     W = np.ones(len(Y))
@@ -41,7 +42,14 @@ def test_HodgeRank(x):
     print("I vector is:" + str(I))
     print("H vector is:" + str(H))
     getConsistencyRatios(Y, I, H, W, verbose=True)
-    G = nx.from_edgelist(R.astype(int).tolist(), create_using=nx.MultiDiGraph)
+    # When drawing the graph, you cannot use negative weights so I need to swop i and j
+    # when the weight happens to be negative. This is connected to a broader problem
+    # in the HodgeRank algorithm which requires the i j to all be in the same order.
+    print(Z)
+    if len(Z[Z<0])>0:
+        Z[Z[:,2]<0] = Z[Z[:,2]<0,[1, 0, 2]]
+        Z[Z<0] = Z[Z<0]*-1
+    G = nx.from_edgelist(Z.astype(int).tolist(), create_using=nx.MultiDiGraph)
     plt.figure(figsize=(3, 3))
     nx.draw(G, with_labels=True, pos=nx.spring_layout(G), node_size=600)
 ```
