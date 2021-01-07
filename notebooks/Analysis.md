@@ -371,10 +371,6 @@ for num in list(df_ham[df_ham.local_incon>0.5].index.values):
 Is the connectivity of the outlier networks lower than the other networks? 
 
 ```python
-
-```
-
-```python
 def extract_network_stats(key_num):
     '''
     Extract network statistics from the subgraphs of 9 households who participate 
@@ -401,23 +397,7 @@ df_ham["density"] = pd.DataFrame.from_dict(network_stats, orient='index')
 ```
 
 ```python
-df_ha
-```
-
-```python
 df_ham[['cycle_ratio','density']].corr()
-```
-
-```python
-df_ham[df_ham.cycle_ratio<0.3][['cycle_ratio','density']].corr()
-```
-
-```python
-df_ham[df_ham.cycle_ratio<0.2][['cycle_ratio','density']].corr()
-```
-
-```python
-df_ham[df_ham.cycle_ratio>0.2][['cycle_ratio','density']].corr()
 ```
 
 ```python
@@ -429,19 +409,11 @@ df_ham[df_ham.cycle_ratio<0.3].density.describe()
 ```
 
 ```python
-data_dict['hamlet_487']
-```
-
-```python
-sns.regplot(x='density',y='cycle_ratio',data=df_ham[df_ham.cycle_ratio>0.2])
+sns.regplot(x='density',y='cycle_ratio',data=df_ham[df_ham.cycle_ratio>0.3])
 ```
 
 ```python
 sns.regplot(x='density',y='cycle_ratio',data=df_ham)
-```
-
-```python
-df_ham.head()
 ```
 
 Export data
@@ -472,56 +444,4 @@ for key in data_dict.keys():
             print(key)
             continue
         x+= 1
-```
-
----
-
-## Additional analysis
-
-
-### Correlation
-
-```python
-sns.set(style="ticks")
-```
-
-```python
-df_ham[df_ham.corr_SAW_meet<df_ham.corr_SAW_hodge].count_hh.count()
-```
-
-```python
-df_ham[df_ham.corr_SAW_meet>=df_ham.corr_SAW_hodge].count_hh.count()
-```
-
-```python
-# Show the joint distribution using kernel density estimation
-g = sns.jointplot(df_ham.corr_SAW_meet, df_ham.corr_SAW_hodge, kind="hex", color="#4CB391")
-
-x0, x1 = g.ax_joint.get_xlim()
-y0, y1 = g.ax_joint.get_ylim()
-lims = [1,-1]
-g.ax_joint.plot(lims, lims, ':k');
-```
-
-```python
-comp_bins = np.linspace(-1.01,1.01,20)
-```
-
-```python
-df_ham.corr_SAW_hodge.hist(bins=comp_bins)
-df_ham.corr_SAW_meet.hist(bins=comp_bins, color='r',alpha=0.5)
-```
-
-```python
-df_ham.corr_SAW_meet.hist()
-```
-
-```python
-sns.jointplot(df[df.consumption<1000].consumption, df[df.consumption<1000].hodge_s, 
-              kind="hex", color="#4CB391")
-```
-
-```python
-sns.jointplot(df[df.consumption<1000].consumption, df[df.consumption<1000].ranking_meeting_norm, 
-              kind="hex", color="#4CB391")
 ```
